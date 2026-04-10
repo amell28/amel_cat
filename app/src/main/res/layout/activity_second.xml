@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".tugasp2.SecondActivity">
+
+  <TextView
+      android:id="@+id/tvJudul"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Kalkulator Bangun Datar dan Ruang"
+      android:textSize="18sp"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:layout_marginTop="16dp"/>
+
+  <TextView
+      android:id="@+id/tvSegitiga"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Luas Segitiga"
+      android:textSize="14sp"
+      android:textStyle="bold"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tvJudul"
+      android:layout_marginTop="24dp"/>
+
+  <EditText
+      android:id="@+id/etAlas"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:hint="Alas"
+      android:inputType="numberDecimal"
+      android:padding="8dp"
+      android:background="@android:drawable/editbox_background"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tvSegitiga"
+      android:layout_marginTop="4dp"/>
+
+  <EditText
+      android:id="@+id/etTinggi"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:hint="Tinggi"
+      android:inputType="numberDecimal"
+      android:padding="8dp"
+      android:background="@android:drawable/editbox_background"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/etAlas"
+      android:layout_marginTop="8dp"/>
+
+  <Button
+      android:id="@+id/btnSegitiga"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="Hitung"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/etTinggi"
+      android:layout_marginTop="12dp"/>
+
+  <TextView
+      android:id="@+id/tvBalok"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Volume Balok"
+      android:textSize="14sp"
+      android:textStyle="bold"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/btnSegitiga"
+      android:layout_marginTop="24dp"/>
+
+  <EditText
+      android:id="@+id/etPanjang"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:hint="Panjang"
+      android:inputType="numberDecimal"
+      android:padding="8dp"
+      android:background="@android:drawable/editbox_background"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tvBalok"
+      android:layout_marginTop="4dp"/>
+
+  <EditText
+      android:id="@+id/etLebar"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:hint="Lebar"
+      android:inputType="numberDecimal"
+      android:padding="8dp"
+      android:background="@android:drawable/editbox_background"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/etPanjang"
+      android:layout_marginTop="8dp"/>
+
+  <EditText
+      android:id="@+id/etTinggiBalok"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:hint="Tinggi"
+      android:inputType="numberDecimal"
+      android:padding="8dp"
+      android:background="@android:drawable/editbox_background"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/etLebar"
+      android:layout_marginTop="8dp"/>
+
+  <Button
+      android:id="@+id/btnBalok"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="Hitung"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/etTinggiBalok"
+      android:layout_marginTop="12dp"/>
+
+  <TextView
+      android:id="@+id/tvHasil"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:background="#F0F0F0"
+      android:gravity="center"
+      android:padding="12dp"
+      android:text="Hasil"
+      android:textSize="14sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/btnBalok"
+      android:layout_marginBottom="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

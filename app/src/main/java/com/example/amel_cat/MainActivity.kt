@@ -1,86 +1,80 @@
-package com.example.amel_cat
+package com.example.amel_cat.tugasp4
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.amel_cat.tugasp4.Custom1Activity
+import com.example.amel_cat.tugasp4.Custom2Activity
+import com.example.amel_cat.databinding.ActivityMainBinding
+import com.example.amel_cat.tugasp2.SecondActivity
+import com.example.amel_cat.tugasp3.LoginActivity
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var etAlas: EditText
-    lateinit var etTinggi: EditText
-    lateinit var etPanjang: EditText
-    lateinit var etLebar: EditText
-    lateinit var etTinggiBalok: EditText
-    lateinit var btnSegitiga: Button
-    lateinit var btnBalok: Button
-    lateinit var tvHasil: TextView
+    private lateinit var binding: ActivityMainBinding
+    private val TAG = "amelcat"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        etAlas = findViewById(R.id.etAlas)
-        etTinggi = findViewById(R.id.etTinggi)
-        etPanjang = findViewById(R.id.etPanjang)
-        etLebar = findViewById(R.id.etLebar)
-        etTinggiBalok = findViewById(R.id.etTinggiBalok)
-        btnSegitiga = findViewById(R.id.btnSegitiga)
-        btnBalok = findViewById(R.id.btnBalok)
-        tvHasil = findViewById(R.id.tvHasil)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btnSegitiga.setOnClickListener {
-            hitungSegitiga()
+        Log.d(TAG, "onCreate: MainActivity dimulai")
+
+        // Tombol 1: ke halaman rumus (SecondActivity di tugasp2)
+        binding.btnRumus.setOnClickListener {
+            Log.d(TAG, "btnRumus diklik")
+            val intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("JUDUL", "Kalkulator Bangun Ruang")
+            intent.putExtra("DESKRIPSI", "Hitung luas segitiga dan volume balok")
+            startActivity(intent)
         }
 
-        btnBalok.setOnClickListener {
-            hitungBalok()
+        // Tombol 2: ke halaman custom 1
+        binding.btnCustom1.setOnClickListener {
+            Log.d(TAG, "btnCustom1 diklik")
+            val intent = Intent(this, Custom1Activity::class.java)
+            intent.putExtra("JUDUL", "Selamat Datang di Halaman  1")
+            intent.putExtra("DESKRIPSI", "Halaman pertama dengan gambar")
+            startActivity(intent)
+        }
+
+        // Tombol 3: ke halaman custom 2
+        binding.btnCustom2.setOnClickListener {
+            Log.d(TAG, "btnCustom2 diklik")
+            val intent = Intent(this, Custom2Activity::class.java)
+            intent.putExtra("JUDUL", "Selamat Datang di Halaman  2")
+            intent.putExtra("DESKRIPSI", "Halaman kedua dengan gambar")
+            startActivity(intent)
+        }
+
+        // Tombol 4: Logout ke LoginActivity
+        binding.btnLogout.setOnClickListener {
+            Log.d(TAG, "btnLogout diklik")
+            AlertDialog.Builder(this).apply {
+                setTitle("Konfirmasi Logout")
+                setMessage("Apakah Anda yakin ingin keluar?")
+                setPositiveButton("Ya") { _, _ ->
+                    val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                }
+                setNegativeButton("Tidak") { _, _ ->
+                    Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
+                }
+                show()
+            }
         }
     }
 
-    fun hitungSegitiga() {
-        val alas = etAlas.text.toString()
-        val tinggi = etTinggi.text.toString()
-
-        if (alas == "" || tinggi == "") {
-            Toast.makeText(this, "Isi semua", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val a = alas.toDouble()
-        val t = tinggi.toDouble()
-
-        if (a <= 0 || t <= 0) {
-            Toast.makeText(this, "Angka harus positif", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val luas = 0.5 * a * t
-        tvHasil.text = "Luas Segitiga = $luas cm2"
-    }
-
-    fun hitungBalok() {
-        val panjang = etPanjang.text.toString()
-        val lebar = etLebar.text.toString()
-        val tinggi = etTinggiBalok.text.toString()
-
-        if (panjang == "" || lebar == "" || tinggi == "") {
-            Toast.makeText(this, "Isi semua", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val p = panjang.toDouble()
-        val l = lebar.toDouble()
-        val t = tinggi.toDouble()
-
-        if (p <= 0 || l <= 0 || t <= 0) {
-            Toast.makeText(this, "Angka harus positif", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val volume = p * l * t
-        tvHasil.text = "Volume Balok = $volume cm3"
-    }
+    override fun onStart() { super.onStart(); Log.d(TAG, "onStart") }
+    override fun onResume() { super.onResume(); Log.d(TAG, "onResume") }
+    override fun onPause() { super.onPause(); Log.d(TAG, "onPause") }
+    override fun onStop() { super.onStop(); Log.d(TAG, "onStop") }
+    override fun onDestroy() { super.onDestroy(); Log.d(TAG, "onDestroy") }
 }

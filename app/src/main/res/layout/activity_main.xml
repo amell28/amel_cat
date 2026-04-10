@@ -1,146 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:background="#F2C45A"
+    tools:context=".tugasp4.MainActivity">
 
-    <TextView
-        android:id="@+id/tvJudul"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kalkulator Bangun Datar dan Ruang"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvSegitiga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Luas Segitiga"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvJudul"
-        android:layout_marginTop="24dp"/>
+        <TextView
+            android:id="@+id/tvJudul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Halaman Utama"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"/>
 
-    <EditText
-        android:id="@+id/etAlas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Alas"
-        android:inputType="numberDecimal"
-        android:padding="8dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSegitiga"
-        android:layout_marginTop="4dp"/>
+        <TextView
+            android:id="@+id/tvDeskripsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selamat datang! Pilih menu di bawah ini"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvJudul"
+            android:layout_marginTop="8dp"/>
 
-    <EditText
-        android:id="@+id/etTinggi"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Tinggi"
-        android:inputType="numberDecimal"
-        android:padding="8dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etAlas"
-        android:layout_marginTop="8dp"/>
+        <!-- Tombol 1: Rumus Bangun Ruang -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardRumus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDeskripsi">
 
-    <Button
-        android:id="@+id/btnSegitiga"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Hitung"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etTinggi"
-        android:layout_marginTop="12dp"/>
+            <Button
+                android:id="@+id/btnRumus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Rumus Bangun Ruang"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:backgroundTint="@color/primary"
+                style="@style/Widget.Material3.Button" />
 
-    <TextView
-        android:id="@+id/tvBalok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volume Balok"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSegitiga"
-        android:layout_marginTop="24dp"/>
+        </com.google.android.material.card.MaterialCardView>
 
-    <EditText
-        android:id="@+id/etPanjang"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Panjang"
-        android:inputType="numberDecimal"
-        android:padding="8dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvBalok"
-        android:layout_marginTop="4dp"/>
+        <!-- Tombol 2: Custom 1 -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCustom1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardRumus">
 
-    <EditText
-        android:id="@+id/etLebar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Lebar"
-        android:inputType="numberDecimal"
-        android:padding="8dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPanjang"
-        android:layout_marginTop="8dp"/>
+            <Button
+                android:id="@+id/btnCustom1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Halaman 1"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:backgroundTint="@color/accent"
+                style="@style/Widget.Material3.Button" />
 
-    <EditText
-        android:id="@+id/etTinggiBalok"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Tinggi"
-        android:inputType="numberDecimal"
-        android:padding="8dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etLebar"
-        android:layout_marginTop="8dp"/>
+        </com.google.android.material.card.MaterialCardView>
 
-    <Button
-        android:id="@+id/btnBalok"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Hitung"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etTinggiBalok"
-        android:layout_marginTop="12dp"/>
+        <!-- Tombol 3: Custom 2 -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCustom2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardCustom1">
 
-    <TextView
-        android:id="@+id/tvHasil"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#F0F0F0"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="Hasil"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnBalok"
-        android:layout_marginBottom="16dp"/>
+            <Button
+                android:id="@+id/btnCustom2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Halaman 2"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:backgroundTint="@color/primary"
+                style="@style/Widget.Material3.Button" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Tombol 4: Logout -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLogout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardCustom2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Logout"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:backgroundTint="@color/error"
+                style="@style/Widget.Material3.Button" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
