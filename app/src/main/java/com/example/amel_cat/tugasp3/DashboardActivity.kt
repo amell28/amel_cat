@@ -3,6 +3,7 @@ package com.example.amel_cat.tugasp3
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.amel_cat.R
 import com.example.amel_cat.databinding.ActivityDashboardBinding
 import com.example.amel_cat.tugasp4.MainActivity
 
@@ -17,6 +18,14 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+            title = "Dashboard"
+            subtitle = "Selamat datang"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
         // tombol kembali ke login
         binding.btnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

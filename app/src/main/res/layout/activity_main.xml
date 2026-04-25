@@ -1,140 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2C45A"
+    android:background="#F5F5F5"
     tools:context=".tugasp4.MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/accent"
+        android:elevation="4dp"
+        app:title="Menu Utama"
+        app:titleTextColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvJudul"
-            android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Halaman Utama"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp"/>
+            android:padding="24dp">
 
-        <TextView
-            android:id="@+id/tvDeskripsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Selamat datang! Pilih menu di bawah ini"
-            android:textSize="14sp"
-            android:textColor="@color/text_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvJudul"
-            android:layout_marginTop="8dp"/>
-
-        <!-- Tombol 1: Rumus Bangun Ruang -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardRumus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDeskripsi">
-
-            <Button
-                android:id="@+id/btnRumus"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvJudul"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Rumus Bangun Ruang"
-                android:textSize="16sp"
-                android:padding="16dp"
-                android:backgroundTint="@color/primary"
-                style="@style/Widget.Material3.Button" />
+                android:layout_marginTop="16dp"
+                android:text="Halaman Utama"
+                android:textColor="@color/primary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Tombol 2: Custom 1 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardCustom1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardRumus">
-
-            <Button
-                android:id="@+id/btnCustom1"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvDeskripsi"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Halaman 1"
-                android:textSize="16sp"
-                android:padding="16dp"
-                android:backgroundTint="@color/accent"
-                style="@style/Widget.Material3.Button" />
+                android:layout_marginTop="8dp"
+                android:text="Selamat datang! Pilih menu di bawah ini"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvJudul" />
 
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Tombol 3: Custom 2 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardCustom2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardCustom1">
-
-            <Button
-                android:id="@+id/btnCustom2"
-                android:layout_width="match_parent"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRumus"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text=" Halaman 2"
-                android:textSize="16sp"
-                android:padding="16dp"
-                android:backgroundTint="@color/primary"
-                style="@style/Widget.Material3.Button" />
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDeskripsi">
 
-        </com.google.android.material.card.MaterialCardView>
+                <Button
+                    android:id="@+id/btnRumus"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/accent"
+                    android:padding="16dp"
+                    android:text=" Rumus Bangun Ruang"
+                    android:textSize="16sp" />
 
-        <!-- Tombol 4: Logout -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardLogout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardCustom2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp">
+            </com.google.android.material.card.MaterialCardView>
 
-            <Button
-                android:id="@+id/btnLogout"
-                android:layout_width="match_parent"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCustom1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text=" Logout"
-                android:textSize="16sp"
-                android:padding="16dp"
-                android:backgroundTint="@color/error"
-                style="@style/Widget.Material3.Button" />
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardRumus">
 
-        </com.google.android.material.card.MaterialCardView>
+                <Button
+                    android:id="@+id/btnCustom1"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/accent"
+                    android:padding="16dp"
+                    android:text=" Halaman 1"
+                    android:textSize="16sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCustom2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardCustom1">
+
+                <Button
+                    android:id="@+id/btnCustom2"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/accent"
+                    android:padding="16dp"
+                    android:text=" Halaman 2"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardWebView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardCustom2">
+
+                <Button
+                    android:id="@+id/btnWebView"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/accent"
+                    android:padding="16dp"
+                    android:text=" Buka Web View"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLogout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardWebView">
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/error"
+                    android:padding="16dp"
+                    android:text=" Logout"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

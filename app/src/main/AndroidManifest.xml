@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -8,41 +10,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Amelcat">
-
-        <!-- LoginActivity sebagai Launcher -->
+        <activity
+            android:name=".tugasp6.WebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".tugasp3.LoginActivity"
+            android:exported="false" /> <!-- LoginActivity sebagai Launcher -->
+        <activity
+            android:name=".tugasp6.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- DashboardActivity -->
+        </activity> <!-- DashboardActivity -->
         <activity
             android:name=".tugasp3.DashboardActivity"
-            android:exported="false" />
-
-        <!-- MainActivity (tugasp4) -->
+            android:exported="false" /> <!-- MainActivity (tugasp4) -->
         <activity
             android:name=".tugasp4.MainActivity"
-            android:exported="false" />
-
-        <!-- Custom Activities (tugasp4) -->
+            android:exported="false" /> <!-- Custom Activities (tugasp4) -->
         <activity
             android:name=".tugasp4.Custom1Activity"
             android:exported="false" />
-
         <activity
             android:name=".tugasp4.Custom2Activity"
-            android:exported="false" />
-
-        <!-- SecondActivity Rumus (tugasp2) -->
+            android:exported="false" /> <!-- SecondActivity Rumus (tugasp2) -->
         <activity
             android:name=".tugasp2.SecondActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>

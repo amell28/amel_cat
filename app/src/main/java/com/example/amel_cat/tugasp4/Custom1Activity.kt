@@ -2,6 +2,7 @@ package com.example.amel_cat.tugasp4
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -27,6 +28,12 @@ class Custom1Activity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = "Halaman 1"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
 
         // Ambil data dari Intent
         val judul = intent.getStringExtra("JUDUL") ?: "Custom 1"
@@ -40,6 +47,17 @@ class Custom1Activity : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             Log.d(TAG, "Tombol back diklik")
             finish()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
