@@ -55,7 +55,7 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@drawable/miaw_shop_logo_with_cute_kitten" />
+        app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/btnMasuk"

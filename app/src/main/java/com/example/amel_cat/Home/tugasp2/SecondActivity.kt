@@ -1,4 +1,4 @@
-package com.example.amel_cat.tugasp2
+package com.example.amel_cat.Home.tugasp2
 
 import android.os.Bundle
 import android.view.MenuItem

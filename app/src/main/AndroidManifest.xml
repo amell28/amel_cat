@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amelcat">
         <activity
-            android:name=".tugasp6.WebViewActivity"
+            android:name=".BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".tugasp3.LoginActivity"
+            android:name=".Home.tugasp6.WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.tugasp3.LoginActivity"
             android:exported="false" /> <!-- LoginActivity sebagai Launcher -->
         <activity
-            android:name=".tugasp6.SplashScreenActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,19 +30,19 @@
             </intent-filter>
         </activity> <!-- DashboardActivity -->
         <activity
-            android:name=".tugasp3.DashboardActivity"
+            android:name=".Home.tugasp3.DashboardActivity"
             android:exported="false" /> <!-- MainActivity (tugasp4) -->
         <activity
             android:name=".tugasp4.MainActivity"
             android:exported="false" /> <!-- Custom Activities (tugasp4) -->
         <activity
-            android:name=".tugasp4.Custom1Activity"
+            android:name=".Home.tugasp4.Custom1Activity"
             android:exported="false" />
         <activity
-            android:name=".tugasp4.Custom2Activity"
+            android:name=".Home.tugasp4.Custom2Activity"
             android:exported="false" /> <!-- SecondActivity Rumus (tugasp2) -->
         <activity
-            android:name=".tugasp2.SecondActivity"
+            android:name=".Home.tugasp2.SecondActivity"
             android:exported="false" />
     </application>
 

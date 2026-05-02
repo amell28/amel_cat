@@ -1,4 +1,4 @@
-package com.example.amel_cat.tugasp6
+package com.example.amel_cat
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.amel_cat.R
-import com.example.amel_cat.tugasp3.LoginActivity
+import com.example.amel_cat.Home.tugasp3.LoginActivity
 import com.example.amel_cat.tugasp4.MainActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

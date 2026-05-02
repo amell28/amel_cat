@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5"
-    tools:context=".tugasp2.SecondActivity">
+    tools:context=".Home.tugasp2.SecondActivity">
 
   <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar"

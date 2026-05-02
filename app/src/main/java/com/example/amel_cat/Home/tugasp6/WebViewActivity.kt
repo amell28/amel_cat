@@ -1,4 +1,4 @@
-package com.example.amel_cat.tugasp6
+package com.example.amel_cat.Home.tugasp6
 
 import android.os.Bundle
 import android.util.Log

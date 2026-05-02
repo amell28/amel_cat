@@ -1,4 +1,4 @@
-package com.example.amel_cat.tugasp3
+package com.example.amel_cat.Home.tugasp3
 
 import android.content.Intent
 import android.os.Bundle

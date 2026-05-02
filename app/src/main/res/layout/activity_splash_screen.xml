@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tugasp6.SplashScreenActivity">
+    tools:context=".SplashScreenActivity">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/miaw_shop_logo_with_cute_kitten" />
+        app:srcCompat="@drawable/logo" />
 
     <ProgressBar
         android:id="@+id/progressBar2"

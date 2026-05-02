@@ -6,12 +6,12 @@ import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.amel_cat.tugasp4.Custom1Activity
-import com.example.amel_cat.tugasp4.Custom2Activity
+import com.example.amel_cat.Home.tugasp4.Custom1Activity
+import com.example.amel_cat.Home.tugasp4.Custom2Activity
 import com.example.amel_cat.databinding.ActivityMainBinding
-import com.example.amel_cat.tugasp2.SecondActivity
-import com.example.amel_cat.tugasp3.LoginActivity
-import com.example.amel_cat.tugasp6.WebViewActivity
+import com.example.amel_cat.Home.tugasp2.SecondActivity
+import com.example.amel_cat.Home.tugasp3.LoginActivity
+import com.example.amel_cat.Home.tugasp6.WebViewActivity
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {

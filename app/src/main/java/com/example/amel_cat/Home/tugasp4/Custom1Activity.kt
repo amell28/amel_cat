@@ -1,5 +1,6 @@
-package com.example.amel_cat.tugasp4
+package com.example.amel_cat.Home.tugasp4
 
+import android.R
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -7,20 +8,20 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.amel_cat.databinding.ActivityCustom2Binding
+import com.example.amel_cat.databinding.ActivityCustom1Binding
 
-class Custom2Activity : AppCompatActivity() {
+class Custom1Activity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCustom2Binding
+    private lateinit var binding: ActivityCustom1Binding
     private val TAG = "amelcat"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        Log.d(TAG, "onCreate: Custom2Activity")
+        Log.d(TAG, "onCreate: Custom1Activity")
 
-        binding = ActivityCustom2Binding.inflate(layoutInflater)
+        binding = ActivityCustom1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
@@ -30,13 +31,14 @@ class Custom2Activity : AppCompatActivity() {
         }
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = "Halaman 2"
+            title = "Halaman 1"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
         }
 
-        val judul = intent.getStringExtra("JUDUL") ?: "Custom 2"
-        val deskripsi = intent.getStringExtra("DESKRIPSI") ?: "Halaman kedua"
+        // Ambil data dari Intent
+        val judul = intent.getStringExtra("JUDUL") ?: "Custom 1"
+        val deskripsi = intent.getStringExtra("DESKRIPSI") ?: "Halaman pertama"
 
         Log.d(TAG, "Menerima data: judul=$judul, deskripsi=$deskripsi")
 
@@ -48,14 +50,40 @@ class Custom2Activity : AppCompatActivity() {
             finish()
         }
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            android.R.id.home -> {
+            R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
                 true
             }
 
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart: Custom1Activity")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume: Custom1Activity")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause: Custom1Activity")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop: Custom1Activity")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy: Custom1Activity")
     }
 }

@@ -1,8 +1,9 @@
-package com.example.amel_cat.tugasp3
+package com.example.amel_cat.Home.tugasp3
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.amel_cat.BaseActivity
 import com.example.amel_cat.R
 import com.example.amel_cat.databinding.ActivityDashboardBinding
 import com.example.amel_cat.tugasp4.MainActivity
@@ -35,7 +36,7 @@ class DashboardActivity : AppCompatActivity() {
 
         // tombol masuk ke MainActivity (Halaman Utama dengan 4 tombol)
         binding.btnMasuk.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, BaseActivity::class.java)
             startActivity(intent)
         }
     }
