@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.amel_cat.Home.tugasp2.SecondActivity
@@ -92,6 +93,13 @@ class HomeFragment : Fragment() {
                     Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
                 }
                 show()
+            }
+        }
+        // Contoh jika ada ChipGroup untuk kategori hewan di Pet Shop
+        binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
+            val chip = group.findViewById<com.google.android.material.chip.Chip>(checkedIds.first())
+            if (chip != null) {
+                Toast.makeText(context, "Filter: ${chip.text}", Toast.LENGTH_SHORT).show()
             }
         }
     }

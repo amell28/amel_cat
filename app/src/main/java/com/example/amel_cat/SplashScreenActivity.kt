@@ -17,30 +17,34 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_splash_screen)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-
-        //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-
-        //Kondisi jika isLogin bernilai true
-        val isLogin = sharedPref.getBoolean("isLogin", false)
-        if (isLogin) {
-            //Panggil Intent untuk ke MainActivity
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish() //Kill AuthActivity
-        }
-
+        // Pindahkan SEMUA logika perpindahan ke dalam lifecycleScope
         lifecycleScope.launch {
-            delay(2000) //simulasi pengambilan data selama 2 detik
+            // 1. Tampilkan logo/splash selama 2 detik
+            delay(2000)
 
-            var intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)
-            startActivity(intent)
+            // 2. Baru ambil data shared preferences
+            val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+            val isLogin = sharedPref.getBoolean("isLogin", false)
+
+            // 3. Tentukan arah halaman
+            if (isLogin) {
+                // Jika sudah login, ke MainActivity
+                val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
+                startActivity(intent)
+            } else {
+                // Jika belum login, ke LoginActivity
+                val intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)
+                startActivity(intent)
+            }
+
+            // 4. Tutup SplashScreen agar tidak bisa di-back
             finish()
         }
     }
