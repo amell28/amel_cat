@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.amel_cat.Home.DataAsetFragment
 import com.example.amel_cat.Home.tugasp2.SecondActivity
 import com.example.amel_cat.Home.tugasp3.LoginActivity
 import com.example.amel_cat.Home.tugasp4.Custom1Activity
@@ -36,11 +37,11 @@ class HomeFragment : Fragment() {
 
         val sharedPref = requireContext().getSharedPreferences("user_pref", MODE_PRIVATE)
 
-        // Setup Toolbar
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.apply {
-            title = "Home"
-        }
+//        // Setup Toolbar
+//        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
+//        (requireActivity() as AppCompatActivity).supportActionBar?.apply {
+//            title = "Home"
+//        }
 
         // Tombol 1
         binding.btnRumus.setOnClickListener {
@@ -50,25 +51,43 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Tombol 2
-        binding.btnCustom1.setOnClickListener {
-            val intent = Intent(requireActivity(), Custom1Activity::class.java)
-            intent.putExtra("JUDUL", "Selamat Datang di Halaman 1")
-            intent.putExtra("DESKRIPSI", "Halaman pertama dengan gambar")
-            startActivity(intent)
-        }
-
-        // Tombol 3
-        binding.btnCustom2.setOnClickListener {
-            val intent = Intent(requireActivity(), Custom2Activity::class.java)
-            intent.putExtra("JUDUL", "Selamat Datang di Halaman 2")
-            intent.putExtra("DESKRIPSI", "Halaman kedua dengan gambar")
-            startActivity(intent)
-        }
+//        // Tombol 2
+//        binding.btnCustom1.setOnClickListener {
+//            val intent = Intent(requireActivity(), Custom1Activity::class.java)
+//            intent.putExtra("JUDUL", "Selamat Datang di Halaman 1")
+//            intent.putExtra("DESKRIPSI", "Halaman pertama dengan gambar")
+//            startActivity(intent)
+//        }
+//
+//        // Tombol 3
+//        binding.btnCustom2.setOnClickListener {
+//            val intent = Intent(requireActivity(), Custom2Activity::class.java)
+//            intent.putExtra("JUDUL", "Selamat Datang di Halaman 2")
+//            intent.putExtra("DESKRIPSI", "Halaman kedua dengan gambar")
+//            startActivity(intent)
+//        }
 
         binding.btnWebView.setOnClickListener {
             val intent = Intent(requireActivity(), WebViewActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.btnDataAset.setOnClickListener {
+            // Cara bener manggil Fragment dari Fragment lain
+            val fragment = DataAsetFragment()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, fragment) // R.id.fragment_container sesuaikan sama ID FrameLayout di Activity utama lu
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+        binding.btnUser.setOnClickListener {
+            // Cara bener manggil Fragment dari Fragment lain
+            val fragment = UserFragment()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, fragment) // R.id.fragment_container sesuaikan sama ID FrameLayout di Activity utama lu
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         // Tombol 4: Logout (BAGIAN YANG SALAH SUDAH DIPERBAIKI)

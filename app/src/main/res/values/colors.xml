@@ -11,4 +11,7 @@
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>
     <color name="error">#D32F2F</color>
+    <color name="lilac">#9B80CA</color>
+    <color name="kuning">#E4DA83</color>
+    <color name="hijau">#4CAF50</color>
 </resources>
