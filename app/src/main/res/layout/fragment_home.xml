@@ -14,6 +14,8 @@
         android:layout_height="wrap_content"
         android:paddingBottom="32dp">
 
+
+
         <View
             android:id="@+id/headerView"
             android:layout_width="match_parent"
