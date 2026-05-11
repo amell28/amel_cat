@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import com.example.amel_cat.RegisterActivity
 import com.example.amel_cat.databinding.ActivityLoginBinding
 import com.example.amel_cat.tugasp4.MainActivity
 
@@ -59,6 +60,12 @@ class LoginActivity : AppCompatActivity() {
         binding.tvForgot.setOnClickListener {
             Toast.makeText(this, "Fitur belum tersedia", Toast.LENGTH_SHORT).show()
         }
+        // klik tombol register
+        binding.btnRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // checkbox remember me (opsional)
         binding.cbRemember.setOnCheckedChangeListener { _, isChecked ->
