@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amelcat">
         <activity
+            android:name=".Home.tugasp10.MutasiAset"
+            android:exported="false" />
+        <activity
             android:name=".ValidasiActivity"
             android:exported="false" />
         <activity

@@ -224,6 +224,27 @@
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="User" android:textColor="@color/black" android:textStyle="bold" android:layout_marginTop="12dp"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnLokasi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="24dp"
+                    android:orientation="vertical">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/ic_mutasi" app:tint="@color/primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mutasi Aset" android:textColor="@color/black" android:textStyle="bold" android:layout_marginTop="12dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
         </GridLayout>
 
         <Button
