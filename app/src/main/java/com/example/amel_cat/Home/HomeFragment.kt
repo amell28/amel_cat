@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.amel_cat.Home.tugasp10.MutasiAset
 import com.example.amel_cat.Home.tugasp2.SecondActivity
 import com.example.amel_cat.Home.tugasp3.LoginActivity
@@ -15,6 +17,14 @@ import com.example.amel_cat.Home.tugasp6.WebViewActivity
 import com.example.amel_cat.R
 import com.example.amel_cat.databinding.FragmentHomeBinding
 import com.google.android.material.snackbar.Snackbar
+
+// IMPORT UNTUK RETROFIT PICSUM YANG BARU
+import com.example.amel_cat.Data.Model.PhotoModel
+import com.example.amel_cat.Data.Api.PhotoApiClient
+import com.example.amel_cat.Home.Photo.PhotoAdapter
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -33,11 +43,18 @@ class HomeFragment : Fragment() {
 
         val sharedPref = requireContext().getSharedPreferences("user_pref", MODE_PRIVATE)
 
-//        // Setup Toolbar
-//        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-//        (requireActivity() as AppCompatActivity).supportActionBar?.apply {
-//            title = "Home"
-//        }
+        // ==========================================
+        // SETUP RECYCLERVIEW UNTUK DATA RETROFIT
+        // ==========================================
+        // Pastikan di fragment_home.xml sudah ada RecyclerView dengan id: rvPhoto
+        binding.rvPhoto.layoutManager = LinearLayoutManager(context)
+
+        // Panggil fungsi mengambil data dari API Picsum
+        loadPhotos()
+
+        // ==========================================
+        // LOGIKA TOMBOL-TOMBOL BAWAAN KAMU
+        // ==========================================
 
         // Tombol 1
         binding.btnRumus.setOnClickListener {
@@ -47,41 +64,23 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-//        // Tombol 2
-//        binding.btnCustom1.setOnClickListener {
-//            val intent = Intent(requireActivity(), Custom1Activity::class.java)
-//            intent.putExtra("JUDUL", "Selamat Datang di Halaman 1")
-//            intent.putExtra("DESKRIPSI", "Halaman pertama dengan gambar")
-//            startActivity(intent)
-//        }
-//
-//        // Tombol 3
-//        binding.btnCustom2.setOnClickListener {
-//            val intent = Intent(requireActivity(), Custom2Activity::class.java)
-//            intent.putExtra("JUDUL", "Selamat Datang di Halaman 2")
-//            intent.putExtra("DESKRIPSI", "Halaman kedua dengan gambar")
-//            startActivity(intent)
-//        }
-
         binding.btnWebView.setOnClickListener {
             val intent = Intent(requireActivity(), WebViewActivity::class.java)
             startActivity(intent)
         }
 
         binding.btnDataAset.setOnClickListener {
-            // Cara bener manggil Fragment dari Fragment lain
             val fragment = DataAsetFragment()
             val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, fragment) // R.id.fragment_container sesuaikan sama ID FrameLayout di Activity utama lu
+            transaction.replace(R.id.fragment_container, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }
 
         binding.btnUser.setOnClickListener {
-            // Cara bener manggil Fragment dari Fragment lain
             val fragment = UserFragment()
             val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, fragment) // R.id.fragment_container sesuaikan sama ID FrameLayout di Activity utama lu
+            transaction.replace(R.id.fragment_container, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }
@@ -91,21 +90,18 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Tombol 4: Logout (BAGIAN YANG SALAH SUDAH DIPERBAIKI)
+        // Tombol 4: Logout
         binding.btnLogout.setOnClickListener {
             AlertDialog.Builder(requireActivity()).apply {
                 setTitle("Konfirmasi Logout")
                 setMessage("Apakah Anda yakin ingin keluar?")
                 setPositiveButton("Ya") { _, _ ->
-                    // Hapus data sharedPref jika perlu
                     sharedPref.edit().clear().apply()
 
-                    // Perbaikan pemanggilan Intent
                     val intent = Intent(requireActivity(), LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
 
-                    // Perbaikan pemanggilan finish
                     requireActivity().finish()
                 }
                 setNegativeButton("Tidak") { _, _ ->
@@ -114,5 +110,37 @@ class HomeFragment : Fragment() {
                 show()
             }
         }
+    }
+
+    // ==========================================
+    // FUNGSI RETROFIT UNTUK LOAD DATA PICSUM
+    // ==========================================
+    private fun loadPhotos() {
+        PhotoApiClient.instance.getPhotos().enqueue(object : Callback<List<PhotoModel>> {
+            override fun onResponse(
+                call: Call<List<PhotoModel>>,
+                response: Response<List<PhotoModel>>
+            ) {
+                if (response.isSuccessful) {
+                    val photos = response.body()
+                    if (photos != null) {
+                        // Masukkan list data dari API ke adapter kustom kamu
+                        val adapter = PhotoAdapter(photos)
+                        binding.rvPhoto.adapter = adapter
+                    }
+                } else {
+                    Toast.makeText(context, "Gagal memuat gambar API", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<PhotoModel>>, t: Throwable) {
+                Toast.makeText(context, "Error Koneksi API: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
