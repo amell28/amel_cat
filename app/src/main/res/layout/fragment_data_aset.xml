@@ -58,35 +58,41 @@
                 style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Baik"
-                app:chipBackgroundColor="@color/primary" />
+                android:text="Baik" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rusak Ringan"
-                app:chipBackgroundColor="@color/kuning" />
+                android:text="Rusak Ringan" />
             <com.google.android.material.chip.Chip
                 style="@style/Widget.Material3.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rusak Berat"
-                app:chipBackgroundColor="@color/error" />
+                android:text="Rusak Berat" />
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDataAset"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="16dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollChips"
+        tools:listitem="@android:layout/simple_list_item_2" />
+
     <TextView
-        android:id="@+id/tvPlaceholder"
+        android:id="@+id/tvEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tabel Data Aset akan tampil di sini..."
-        android:textColor="#757575"
+        android:text="Belum ada data aset"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scrollChips"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintTop_toBottomOf="@id/scrollChips" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

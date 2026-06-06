@@ -6,28 +6,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.amel_cat.Data.AppDatabase
 import com.example.amel_cat.R
-import com.example.amel_cat.Home.TambahAsetFragment
 import com.example.amel_cat.databinding.FragmentDataAsetBinding
 import com.google.android.material.chip.Chip
+import kotlinx.coroutines.launch
 
 class DataAsetFragment : Fragment() {
 
     private var _binding: FragmentDataAsetBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var asetAdapter: AsetAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentDataAsetBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupRecyclerView()
 
         // Logika saat Chip Filter diklik
         binding.chipGroupKondisi.setOnCheckedStateChangeListener { group, checkedIds ->
@@ -43,11 +47,34 @@ class DataAsetFragment : Fragment() {
         binding.btnTambahAset.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, TambahAsetFragment())
-                .addToBackStack(null) // Agar bisa tombol Back
+                .addToBackStack(null)
                 .commit()
         }
+
         binding.toolbarDataAset.setNavigationOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
+        }
+
+        // Amati data dari Room Database
+        lifecycleScope.launch {
+            AppDatabase.getDatabase(requireContext()).asetDao().getAllAset().collect { listAset ->
+                if (listAset.isEmpty()) {
+                    binding.tvEmpty.visibility = View.VISIBLE
+                    binding.rvDataAset.visibility = View.GONE
+                } else {
+                    binding.tvEmpty.visibility = View.GONE
+                    binding.rvDataAset.visibility = View.VISIBLE
+                    asetAdapter.updateData(listAset)
+                }
+            }
+        }
+    }
+
+    private fun setupRecyclerView() {
+        asetAdapter = AsetAdapter(emptyList())
+        binding.rvDataAset.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = asetAdapter
         }
     }
 

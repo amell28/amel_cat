@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.amel_cat.Data.AppDatabase
+import com.example.amel_cat.Data.Entity.Aset
 import com.example.amel_cat.databinding.FragmentTambahAsetBinding
+import kotlinx.coroutines.launch
 
 class TambahAsetFragment : Fragment() {
 
@@ -22,21 +26,30 @@ class TambahAsetFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // Aksi saat tombol simpan diklik
+        // Di dalam onViewCreated, update bagian binding.btnSimpanAset.setOnClickListener
         binding.btnSimpanAset.setOnClickListener {
             val nama = binding.etNamaAset.text.toString()
+            val kategori = binding.etKategori.text.toString()
+            val nilai = binding.etNilaiAset.text.toString().toIntOrNull() ?: 0
 
             if (nama.isEmpty()) {
-                // Contoh penggunaan error helper bawaan TextInputLayout
                 binding.etNamaAset.error = "Nama aset tidak boleh kosong!"
             } else {
-                Toast.makeText(requireContext(), "Aset $nama berhasil disimpan!", Toast.LENGTH_SHORT).show()
-                // Kembali ke halaman sebelumnya secara otomatis
-                requireActivity().supportFragmentManager.popBackStack()
-            }
+                // Simpan ke Room menggunakan Coroutines
+                val newAset = Aset(
+                    namaAset = nama,
+                    jenisAset = kategori,
+                    jumlahAset = nilai,
+                    lokasiAset = "Gudang"
+                )
 
-            binding.toolbarTambahAset.setNavigationOnClickListener {
-                requireActivity().supportFragmentManager.popBackStack()
+                lifecycleScope.launch {
+                    val db = AppDatabase.getDatabase(requireContext())
+                    db.asetDao().insertAset(newAset)
+
+                    Toast.makeText(requireContext(), "Aset $nama berhasil disimpan!", Toast.LENGTH_SHORT).show()
+                    requireActivity().supportFragmentManager.popBackStack()
+                }
             }
         }
 

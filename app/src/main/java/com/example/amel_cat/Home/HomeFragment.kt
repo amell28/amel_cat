@@ -90,6 +90,12 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        binding.btnDataStaff.setOnClickListener {    val fragment = StaffFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null).commit()
+        }
+
         // Tombol 4: Logout
         binding.btnLogout.setOnClickListener {
             AlertDialog.Builder(requireActivity()).apply {
