@@ -11,10 +11,8 @@ import com.example.amel_cat.Data.Entity.Staff
 
 @Database(entities = [Aset::class, Staff::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-
     abstract fun asetDao(): AsetDao
     abstract fun staffDao(): StaffDao
-
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null

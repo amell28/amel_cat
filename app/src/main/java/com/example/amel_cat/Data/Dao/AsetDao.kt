@@ -9,6 +9,9 @@ interface AsetDao {
     @Query("SELECT * FROM aset ORDER BY id ASC")
     fun getAllAset(): Flow<List<Aset>>
 
+    @Query("SELECT * FROM aset WHERE id = :id LIMIT 1")
+    suspend fun getAsetById(id: Int): Aset?
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAset(aset: Aset)
 

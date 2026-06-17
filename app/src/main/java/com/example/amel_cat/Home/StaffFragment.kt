@@ -31,7 +31,10 @@ class StaffFragment : Fragment() {
         binding.rvStaff.adapter = staffAdapter
 
         lifecycleScope.launch {
-            AppDatabase.getDatabase(requireContext()).staffDao().getAllStaff().collect {
+            AppDatabase.getDatabase(requireContext())
+                .staffDao()
+                .getAllStaff()
+                .collect {
                 staffAdapter.updateData(it)
             }
         }
