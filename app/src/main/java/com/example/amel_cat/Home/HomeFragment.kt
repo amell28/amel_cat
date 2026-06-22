@@ -71,8 +71,6 @@ class HomeFragment : Fragment() {
 
         binding.rvPhoto.layoutManager = LinearLayoutManager(context)
 
-
-
         // Panggil fungsi mengambil data dari API Picsum
         loadPhotos()
 

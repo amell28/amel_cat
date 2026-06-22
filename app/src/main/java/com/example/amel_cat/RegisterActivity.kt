@@ -55,7 +55,6 @@ class RegisterActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                // --- SIMPAN KE SHAREDPREFERENCE (Memori Permanen) ---
                 val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
                 val editor = sharedPref.edit()
                 editor.putString("reg_nama", nama)

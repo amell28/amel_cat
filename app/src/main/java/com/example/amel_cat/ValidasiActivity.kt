@@ -32,7 +32,7 @@ class ValidasiActivity : AppCompatActivity() {
 
         // 3. LOGIKA TOMBOL KONFIRMASI (Pindah ke BaseActivity/Halaman Utama)
         binding.btnConfirm.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, BaseActivity::class.java)
             // Clear task agar user tidak bisa back ke halaman registrasi lagi
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
