@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.example.amel_cat.Data.Entity.Staff
 import com.example.amel_cat.R
 import com.example.amel_cat.databinding.FragmentUserBinding
+import com.example.amel_cat.databinding.ItemStaffBinding
 
 class UserFragment : Fragment() {
     private var _binding: FragmentUserBinding? = null
@@ -64,3 +67,22 @@ class UserFragment : Fragment() {
 }
 
 
+class StaffAdapter(private var list: List<Staff>) : RecyclerView.Adapter<StaffAdapter.ViewHolder>() {
+    class ViewHolder(val binding: ItemStaffBinding) : RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(ItemStaffBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val staff = list[position]
+        holder.binding.tvNamaStaff.text = staff.namaStaff
+        holder.binding.tvJabatan.text = staff.jabatan
+    }
+
+    override fun getItemCount() = list.size
+
+    fun updateData(newList: List<Staff>) {
+        list = newList
+        notifyDataSetChanged()
+    }
+}

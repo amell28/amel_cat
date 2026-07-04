@@ -7,8 +7,6 @@ import com.example.amel_cat.databinding.ActivityOnboardAsetBinding
 
 // 1. NAMA CLASS-NYA HARUS ONBOARD ASET, BUKAN BINDING!
 class OnboardAsetActivity : AppCompatActivity() {
-
-    // 2. Di sini baru bener pakai ActivityOnboardAsetBinding
     private lateinit var binding: ActivityOnboardAsetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

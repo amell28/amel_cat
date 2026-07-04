@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import com.example.amel_cat.BaseActivity
 import com.example.amel_cat.RegisterActivity
 import com.example.amel_cat.databinding.ActivityLoginBinding
 import com.example.amel_cat.tugasp4.MainActivity
@@ -28,17 +29,20 @@ class LoginActivity : AppCompatActivity() {
 
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
-            // validasi email
+            
+            // validasi email (Logika sementara sesuai kode sebelumnya)
             if (email.isEmpty()) {
-
-                sharedPref.edit() {
+                sharedPref.edit {
                     putBoolean("isEmail", true)
                     putString("Password", password)
                 }
+                // Jika email kosong, diarahkan ke MainActivity (tugas p4)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
+                return@setOnClickListener
             }
+            
             // validasi password
             if (password.isEmpty()) {
                 binding.etPassword.error = "Password wajib diisi"
@@ -46,13 +50,11 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // sukses → pindah ke Dashboard
-            val intent = Intent(this, DashboardActivity::class.java)
+            // sukses → pindah ke BaseActivity (Halaman Utama)
+            val intent = Intent(this, BaseActivity::class.java)
             startActivity(intent)
 
-            // optional: biar tidak bisa balik ke login
             finish()
-
             Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
         }
 
@@ -60,12 +62,12 @@ class LoginActivity : AppCompatActivity() {
         binding.tvForgot.setOnClickListener {
             Toast.makeText(this, "Fitur belum tersedia", Toast.LENGTH_SHORT).show()
         }
+        
         // klik tombol register
         binding.btnRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
-
 
         // checkbox remember me (opsional)
         binding.cbRemember.setOnCheckedChangeListener { _, isChecked ->

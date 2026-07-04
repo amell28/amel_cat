@@ -8,9 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.amel_cat.Home.tugasp3.LoginActivity
-import com.example.amel_cat.Home.tugasp6.WebViewActivity
-import com.example.amel_cat.R
-import com.example.amel_cat.databinding.FragmentHomeBinding
 import com.example.amel_cat.databinding.FragmentOnboardAset2Binding
 
 class OnboardAset2Fragment : Fragment() {
@@ -25,23 +22,18 @@ class OnboardAset2Fragment : Fragment() {
         return binding.root
     }
 
-    // Tempat terbaik untuk menyambungkan tombol dan logika interaksi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnStart.setOnClickListener {
-            Toast.makeText(requireContext(), "Masuk berhasil", Toast.LENGTH_SHORT).show()
-
+            // Kembali ke alur Login setelah onboarding
             val intent = Intent(requireActivity(), LoginActivity::class.java)
             startActivity(intent)
 
-            // 3. Tutup activity onboarding
             activity?.finish()
         }
-
     }
 
-    // Membersihkan binding saat fragment dihancurkan agar tidak terjadi memory leak
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

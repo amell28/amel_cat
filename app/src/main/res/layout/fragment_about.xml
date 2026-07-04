@@ -62,25 +62,65 @@
                         android:lineSpacingExtra="5dp"
                         android:textColor="#424242"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fitur Utama Sistem:"
-                        android:textStyle="bold"
-                        android:layout_marginTop="20dp"
-                        android:textColor="@color/accent"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="• Pendataan Aset (Tanah, Bangunan, Kendaraan)\n• Inventaris Barang Kantor\n• Laporan Kondisi Barang Tahunan\n• Manajemen Ruangan &amp; Lokasi"
-                        android:textSize="14sp"
-                        android:lineSpacingExtra="4dp"
-                        android:textColor="#616161"/>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Camera dan QR Code:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/accent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:weightSum="3">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCamera"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:backgroundTint="@color/accent"
+                    android:text="Camera"
+                    android:textSize="10sp"
+                    app:icon="@drawable/ic_menu_camera"
+                    app:iconGravity="top" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnScanQR"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:backgroundTint="@color/accent"
+                    android:text="Scan"
+                    android:textSize="10sp"
+                    app:icon="@drawable/ic_scan"
+                    app:iconGravity="top" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGenerateQR"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:backgroundTint="@color/accent"
+                    android:text="Gen QR"
+                    android:textSize="10sp"
+                    app:icon="@drawable/ic_qr"
+                    app:iconGravity="top" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
