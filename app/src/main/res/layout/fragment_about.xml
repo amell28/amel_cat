@@ -89,9 +89,11 @@
                     android:layout_weight="1"
                     android:layout_margin="4dp"
                     android:backgroundTint="@color/accent"
+                    android:textColor="@color/white"
                     android:text="Camera"
                     android:textSize="10sp"
                     app:icon="@drawable/ic_menu_camera"
+                    app:iconTint="@color/white"
                     app:iconGravity="top" />
 
                 <com.google.android.material.button.MaterialButton
@@ -102,9 +104,11 @@
                     android:layout_weight="1"
                     android:layout_margin="4dp"
                     android:backgroundTint="@color/accent"
+                    android:textColor="@color/white"
                     android:text="Scan"
                     android:textSize="10sp"
                     app:icon="@drawable/ic_scan"
+                    app:iconTint="@color/white"
                     app:iconGravity="top" />
 
                 <com.google.android.material.button.MaterialButton
@@ -116,8 +120,10 @@
                     android:layout_margin="4dp"
                     android:backgroundTint="@color/accent"
                     android:text="Gen QR"
+                    android:textColor="@color/white"
                     android:textSize="10sp"
                     app:icon="@drawable/ic_qr"
+                    app:iconTint="@color/white"
                     app:iconGravity="top" />
 
             </LinearLayout>

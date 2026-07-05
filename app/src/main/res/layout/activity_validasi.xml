@@ -1,26 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal"
-    android:background="@android:color/white">
+    android:background="@color/background"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/ivSuccess"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:src="@android:drawable/checkbox_on_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/accent" />
 
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Validasi Data Anda"
-        android:textSize="22sp"
+        android:textColor="@color/text_primary"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="32dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivSuccess" />
 
-    <androidx.cardview.widget.CardView
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Pastikan data di bawah ini sudah benar sebelum melanjutkan."
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:strokeColor="@color/grey"
+        app:strokeWidth="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,50 +61,102 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <TextView android:id="@+id/tvValNama"
+            <TextView
+                android:id="@+id/tvValNama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:drawablePadding="12dp"
                 android:text="Nama: -"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
-                android:layout_marginBottom="8dp"/>
+                app:drawableStartCompat="@android:drawable/ic_menu_edit"
+                app:drawableTint="@color/accent" />
 
-            <TextView android:id="@+id/tvValEmail"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:id="@+id/tvValEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:drawablePadding="12dp"
                 android:text="Email: -"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
-                android:layout_marginBottom="8dp"/>
+                app:drawableStartCompat="@android:drawable/sym_action_email"
+                app:drawableTint="@color/accent" />
 
-            <TextView android:id="@+id/tvValTanggal"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:id="@+id/tvValTanggal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:drawablePadding="12dp"
                 android:text="Tanggal Lahir: -"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
-                android:layout_marginBottom="8dp"/>
+                app:drawableStartCompat="@android:drawable/ic_menu_my_calendar"
+                app:drawableTint="@color/accent" />
 
-            <TextView android:id="@+id/tvValGender"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:id="@+id/tvValGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:drawablePadding="12dp"
                 android:text="Jenis Kelamin: -"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
-                android:layout_marginBottom="8dp"/>
+                app:drawableStartCompat="@android:drawable/ic_menu_edit"
+                app:drawableTint="@color/accent" />
 
-            <TextView android:id="@+id/tvValUsername"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:id="@+id/tvValUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawablePadding="12dp"
                 android:text="Username: -"
-                android:textSize="16sp" />
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                app:drawableStartCompat="@android:drawable/ic_menu_search"
+                app:drawableTint="@color/accent" />
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnConfirm"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="32dp"
         android:text="Konfirmasi &amp; Selesai"
-        android:backgroundTint="@color/accent" />
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:backgroundTint="@color/accent"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
